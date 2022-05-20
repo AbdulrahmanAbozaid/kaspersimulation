@@ -17,7 +17,6 @@
     margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -422,7 +421,7 @@ header nav .form i {
     text-align: center;
 }
 
-@media (max-width: 768) {
+@media (max-width: 768px) {
     .design .image {
         display: none;
     }
@@ -508,9 +507,9 @@ header nav .form i {
     }
 }
 
-@media (min-width: 1199px) {
+@media (min-width: 1200px) {
     .portfolio .imgs-container .box {
-        flex-basis: 25px;
+        flex-basis: 25%;
     }
 }
 
@@ -645,6 +644,7 @@ header nav .form i {
 
 .stats::before {
     content: '';
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;
@@ -654,8 +654,8 @@ header nav .form i {
 
 .stats .container {
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .stats .container .box {
@@ -664,6 +664,8 @@ header nav .form i {
     background-color: var(--transparent-color);
 }
 
+
+/* 
 @media (max-width: 767px) {
     .stats .container .box {
         flex-basis: 100%;
@@ -680,7 +682,7 @@ header nav .form i {
     .stats .container .box {
         flex-basis: 25%;
     }
-}
+} */
 
 .stats .container .box i {
     width: 40px;
@@ -833,9 +835,9 @@ header nav .form i {
     content: '';
     position: absolute;
     background-color: transparent;
-    right: -8px;
+    right: -7px;
     border-style: solid;
-    top: -12px;
+    top: -14px;
     border-color: black transparent transparent;
     border-width: 8px;
 }
@@ -977,15 +979,6 @@ header nav .form i {
     font-size: 20px;
 }
 
-@keyframes fill-mode {
-    0% {
-        height: 3px;
-    }
-    100% {
-        height: 100%;
-    }
-}
-
 .pricing .contact-link {
     position: relative;
     display: block;
@@ -997,16 +990,21 @@ header nav .form i {
     text-decoration: none;
 }
 
-.pricing .contact-link:hover::before {
+.pricing .contact-link::before {
     content: '';
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 100%;
+    height: 0;
     background-color: rgba(151, 41, 41, 0.5);
-    animation: fill-mode 2s ease-in-out infinite alternate;
+    transition: height 1s ease-in-out;
     z-index: 0;
+    opacity: .5;
+}
+
+.pricing .contact-link:hover::before {
+    height: 100%;
 }
 
 
@@ -1038,6 +1036,7 @@ header nav .form i {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 @media (max-width: 991px) {
@@ -1049,7 +1048,7 @@ header nav .form i {
 .subscribe form {
     display: flex;
     position: relative;
-    width: 500px;
+    min-width: 50%;
     max-width: 100%;
 }
 
@@ -1140,6 +1139,7 @@ header nav .form i {
 
 .contact .content form textarea.main-input {
     height: 200px;
+    resize: vertical;
 }
 
 .contact .content form input[type="submit"] {
